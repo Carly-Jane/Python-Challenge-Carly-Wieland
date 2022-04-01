@@ -46,6 +46,17 @@ with open(election_data_csv) as csvfile:
     # I miss Pandas already
   
 
+# *** FIRST TASK: The total number of votes cast ***
+# Total Votes will be the variable name (as the instructions example indicates)
+# I'll get this by getting the length of column 0 and then subtracting 1 to account for the header row.
+
+
+
+
+# *********************************************************************************************************************************
+# Below is code from class activities that I will use to create the final code for my homework
+
+
 
 # Define the function and have it accept the 'wrestler_data' as its sole parameter
 #def print_percentages(wrestler_data):
