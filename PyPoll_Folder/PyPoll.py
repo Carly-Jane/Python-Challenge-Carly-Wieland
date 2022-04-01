@@ -27,13 +27,15 @@
 #In addition, your final script should both print the analysis to the terminal and export a text file with the results.
 
 # Basics: connect with the data and look at the headers
+
 import os
 import csv
 
-# Path to collect data from the CSV file
-election_data_csv = os.path.join('election_data.csv')
 
-with open(election_data_csv) as csvfile:
+# Path to collect data from the CSV file
+election_data = os.path.join('election_data.csv')
+
+with open(election_data) as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -44,11 +46,35 @@ with open(election_data_csv) as csvfile:
 
     # I may delete this line from the code later as it isn't required for the final result and it might make the results look messy.
     # I miss Pandas already
-  
+
+# Define the columns as per headers in the CSV file
+VoterID = str(election_data[0])
+County = str(election_data[1])
+Candidate = str(election_data[2])
+
 
 # *** FIRST TASK: The total number of votes cast ***
 # Total Votes will be the variable name (as the instructions example indicates)
 # I'll get this by getting the length of column 0 and then subtracting 1 to account for the header row.
+
+# okay so "Total_Votes = len(VoterID)" "print(Total_Votes)"
+# Okay that did not work, all it did was come back with the value of 1
+# do I need to do a loop?
+# i forgot to include the index column - actually I'm not sure thats a column
+# SOS
+# Python lesson 2 slide pack says "all rows are lists"
+# FINALY got it - thank you google.
+# FYI the answer is 3521002, andf i verified that by checking the data. 
+# It doesnt include the header as python starts as 0.
+
+num_rows = 0
+
+for row in open(election_data):
+
+    num_rows += 1
+
+print(num_rows)
+
 
 
 
