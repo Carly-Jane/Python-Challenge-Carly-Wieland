@@ -26,25 +26,24 @@
 
 #In addition, your final script should both print the analysis to the terminal and export a text file with the results.
 
+# Basics: connect with the data and look at the headers
 import os
 import csv
 
-# Path to collect data from the Resources folder
+# Path to collect data from the CSV file
 election_data_csv = os.path.join('election_data.csv')
-
-# Method 2: Improved Reading using CSV module
 
 with open(election_data_csv) as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    #print(csvreader)
-
-    # Read the header row first (skip this step if there is no header)
+    # Read the header row (to get an idea of where the data is located)
     csv_header = next(csvreader)
     print(f"CSV Header: {csv_header}")
 
+    # I may delete this line from the code later as it isn't required for the final result and it might make the results look messy.
+    # I miss Pandas already
   
 
 
