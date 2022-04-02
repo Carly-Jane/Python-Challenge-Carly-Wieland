@@ -32,6 +32,7 @@ import os
 import csv
 
 
+
 # Path to collect data from the CSV file
 election_data = os.path.join('election_data.csv')
 
@@ -43,6 +44,25 @@ with open(election_data) as csvfile:
     # Read the header row (to get an idea of where the data is located)
     csv_header = next(csvreader)
     print(f"CSV Header: {csv_header}")
+
+# *** SECOND TASK: A complete list of candidates who received votes ***
+# okay so here I want to get a list of all the names
+# identify all unique values in the election_data[2] position
+# refferenced: https://www.pythonpool.com/python-count-unique-values-in-list/
+
+    list_of_candidates = []
+
+    count = 0
+
+    for row in csvreader:
+
+        if row[2] not in list_of_candidates:
+
+            count = count + 1
+
+            list_of_candidates.append(row[2])
+
+print(list_of_candidates)
 
     # I may delete this line from the code later as it isn't required for the final result and it might make the results look messy.
     # I miss Pandas already
@@ -65,22 +85,14 @@ for row in open(election_data):
 
 print(Total_Votes)
 
-# *** SECOND TASK: A complete list of candidates who received votes ***
-# okay so here I want to get a list of all the names
-# identify all unique values in the election_data[2] position
-# another loop
-# class activity UdemyZip
-# we want to create our OWN list
 
-# Lists to store data
 
-for row in open(election_data):
+# get candidate names, and hard code them
 
-    list_of_candidates = []
+#
 
-    list_of_candidates.append(row[2])
 
-print(list_of_candidates)
+
 
 # then when I have those names, i want to make each name a variable and start a count on it.
 
