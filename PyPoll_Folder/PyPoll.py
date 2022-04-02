@@ -55,33 +55,89 @@ Candidate = str(election_data[2])
 
 # *** FIRST TASK: The total number of votes cast ***
 # Total Votes will be the variable name (as the instructions example indicates)
-# I'll get this by getting the length of column 0 and then subtracting 1 to account for the header row.
+# FYI the answer is 3521002, andf i verified that by checking the data. It doesnt include the header as python starts as 0.
 
-# okay so "Total_Votes = len(VoterID)" "print(Total_Votes)"
-# Okay that did not work, all it did was come back with the value of 1
-# do I need to do a loop?
-# i forgot to include the index column - actually I'm not sure thats a column
-# SOS
-# Python lesson 2 slide pack says "all rows are lists"
-# FINALY got it - thank you google.
-# FYI the answer is 3521002, andf i verified that by checking the data. 
-# It doesnt include the header as python starts as 0.
-
-num_rows = 0
+Total_Votes = 0
 
 for row in open(election_data):
 
-    num_rows += 1
+    Total_Votes += 1
 
-print(num_rows)
+print(Total_Votes)
 
+# *** SECOND TASK: A complete list of candidates who received votes ***
+# okay so here I want to get a list of all the names
+# identify all unique values in the election_data[2] position
+# another loop
+# class activity UdemyZip
+# we want to create our OWN list
 
+# Lists to store data
 
+for row in open(election_data):
 
+    list_of_candidates = []
+
+    list_of_candidates.append(row[2])
+
+print(list_of_candidates)
+
+# then when I have those names, i want to make each name a variable and start a count on it.
 
 # *********************************************************************************************************************************
 # Below is code from class activities that I will use to create the final code for my homework
 
+#udemy_csv = os.path.join("..", "Resources", "web_starter.csv")
+
+# Lists to store data
+#title = []
+#price = []
+#subscribers = []
+#reviews = []
+#review_percent = []
+#length = []
+
+# Use encoding for Windows
+# with open(udemy_csv, newline='', encoding='utf-8') as csvfile:
+#with open(udemy_csv, newline='') as csvfile:
+    #csvreader = csv.reader(csvfile, delimiter=",")
+    #for row in csvreader:
+        # Add title
+        #title.append(row[1])
+
+        # Add price
+        #price.append(row[4])
+
+        # Add number of subscribers
+        #subscribers.append(row[5])
+
+        # Add amount of reviews
+        #reviews.append(row[6])
+
+        # Determine percent of review left to 2 decimal places
+        #percent = round(int(row[6]) / int(row[5]), 2)
+        #review_percent.append(percent)
+
+        # Get length of the course to just a number
+        #new_length = row[9].split(" ")
+        #length.append(float(new_length[0]))
+
+# Zip lists together
+#cleaned_csv = zip(title, price, subscribers, reviews, review_percent, length)
+
+# Set variable for output file
+#output_file = os.path.join("web_final.csv")
+
+#  Open the output file
+#with open(output_file, "w", newline="") as datafile:
+    #writer = csv.writer(datafile)
+
+    # Write the header row
+    #writer.writerow(["Title", "Course Price", "Subscribers", "Reviews Left",
+                     #"Percent of Reviews", "Length of Course"])
+
+    # Write in zipped rows
+    #writer.writerows(cleaned_csv)
 
 
 # Define the function and have it accept the 'wrestler_data' as its sole parameter
