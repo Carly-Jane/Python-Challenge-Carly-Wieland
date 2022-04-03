@@ -62,16 +62,43 @@ with open(election_data) as csvfile:
 
     print(list_of_candidates)
 
-# *** The total number of votes each candidate won ***
-# ['Khan', 'Correy', 'Li', "O'Tooley"] I want to make each name a variable and start a count on it.
-# like, technically I'm ready to start this part, but emotionally, I'm not sure.
+            # *** The total number of votes each candidate won ***
+            # ["Khan", "Correy", "Li", "O'Tooley"] I want to make each name a variable and start a count on it.
+            # like, technically I'm ready to start this part, but emotionally, I'm not sure.
+
+# This is semi working, but pending the indentation, the error code is saying the file is closed
+# and if i move it to be within the first loop, i get milions of lines in the terminal
+# SOS.
+# GIRL OKAY so it was in indent issue, ffs. but it's fixed now. 
+# my issue NOW is the vote count is coming back as 0.
+
+    vote_count_for_khan = 0
+    vote_count_for_correy = 0
+    vote_count_for_li = 0
+    vote_count_for_otooley = 0
+
+    for row in csvreader:
+
+        if row[2] == "Khan":
+            vote_count_for_khan += 1
+        elif row[2] == "Correy":
+            vote_count_for_correy += 1
+        elif row[2] == "Li":
+            vote_count_for_li += 1
+        elif row[2] == "O'Tooley":
+            vote_count_for_otooley += 1
+
+    print(f"Khan: {vote_count_for_khan}")
+    print(f"Correy: {vote_count_for_correy}")
+    print(f"Li: {vote_count_for_li}")
+    print(f"O Tooley: {vote_count_for_otooley}")               
 
 # *** The total number of votes cast ***
 # FYI the answer is 3521002, and I verified that by checking the data. It doesnt include the header as python starts as 0.
 
-    Total_Votes = 0
+Total_Votes = 0
 
-    for row in open(election_data):
+for row in open(election_data):
 
         Total_Votes += 1
 
