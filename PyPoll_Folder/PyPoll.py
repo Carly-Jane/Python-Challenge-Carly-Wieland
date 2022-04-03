@@ -31,8 +31,6 @@
 import os
 import csv
 
-
-
 # Path to collect data from the CSV file
 election_data = os.path.join('election_data.csv')
 
@@ -42,12 +40,12 @@ with open(election_data) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
 
     # Read the header row (to get an idea of where the data is located)
+    # I will delete this line from the code later as it isn't required for the final result.
     csv_header = next(csvreader)
     print(f"CSV Header: {csv_header}")
 
-# *** SECOND TASK: A complete list of candidates who received votes ***
-# okay so here I want to get a list of all the names
-# identify all unique values in the election_data[2] position
+# *** A complete list of candidates who received votes ***
+# identify all unique values in the election_data[2] position as I want to get a list of all the names
 # refferenced: https://www.pythonpool.com/python-count-unique-values-in-list/
 
     list_of_candidates = []
@@ -62,10 +60,27 @@ with open(election_data) as csvfile:
 
             list_of_candidates.append(row[2])
 
-print(list_of_candidates)
+    print(list_of_candidates)
 
-    # I may delete this line from the code later as it isn't required for the final result and it might make the results look messy.
-    # I miss Pandas already
+# *** The total number of votes each candidate won ***
+# ['Khan', 'Correy', 'Li', "O'Tooley"] I want to make each name a variable and start a count on it.
+# like, technically I'm ready to start this part, but emotionally, I'm not sure.
+
+# *** The total number of votes cast ***
+# FYI the answer is 3521002, and I verified that by checking the data. It doesnt include the header as python starts as 0.
+
+    Total_Votes = 0
+
+    for row in open(election_data):
+
+        Total_Votes += 1
+
+print(Total_Votes)
+
+
+  
+
+
 
 # Define the columns as per headers in the CSV file
 VoterID = str(election_data[0])
@@ -73,28 +88,12 @@ County = str(election_data[1])
 Candidate = str(election_data[2])
 
 
-# *** FIRST TASK: The total number of votes cast ***
-# Total Votes will be the variable name (as the instructions example indicates)
-# FYI the answer is 3521002, andf i verified that by checking the data. It doesnt include the header as python starts as 0.
-
-Total_Votes = 0
-
-for row in open(election_data):
-
-    Total_Votes += 1
-
-print(Total_Votes)
-
-
-
-# get candidate names, and hard code them
-
-#
 
 
 
 
-# then when I have those names, i want to make each name a variable and start a count on it.
+
+
 
 # *********************************************************************************************************************************
 # Below is code from class activities that I will use to create the final code for my homework
