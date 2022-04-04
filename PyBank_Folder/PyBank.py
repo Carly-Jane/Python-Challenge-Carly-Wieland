@@ -22,27 +22,43 @@
 
 #In addition, your final script should both print the analysis to the terminal and export a text file with the results.
 
+
 # let's go baby
 
-Import os
-Import csv
+import os
+import csv
 
 #Empty lists for variables to be counted in. Quick mafths.
 
-Months = []
-Total = []
+months = []
+total = []
 largest_increase = []
 largest_decrease = []
 
 # Connect CSV file 
-bank_data_csv = os.path.join(budget_data.csv)
+bank_data_csv = os.path.join('budget_data.csv')
 
-With open(bank_data_csv) as csvfile:
-csvreader = csv.reader(csvfile, delimiter=’,’)
 
-# skip header row
-csv_header = next(csvreader, none)
+with open (bank_data_csv) as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=',')
 
-# alright alright alright
-# *** The total number of months included in the dataset ***
-# Loop through each row and append source data values to variables
+    # skip header row
+    csv_header = next(csvreader, None)
+
+    # alright alright alright
+    # *** The total number of months included in the dataset ***
+    # Loop through each row and append data to variables
+
+    for row in csvreader:
+
+        # append first column (date) to months list
+        months.append(row[0])
+
+        # append second column (profit/loss) to total list
+        total.append(int(row[1]))
+
+        # append third column (profit/loss) to lge_increase list
+        largest_increase.append(int(row[1]))
+
+        # append third column (profit/loss) to lge_decrease list
+        largest_decrease.append(int(row[1]))
