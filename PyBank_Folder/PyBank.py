@@ -31,7 +31,7 @@ import csv
 #Empty lists for variables to be counted in. Quick mafths.
 
 total_months = []
-total_profit_loss = []
+total_profit_or_loss = []
 largest_increase = []
 largest_decrease = []
 
@@ -56,7 +56,7 @@ with open (bank_data_csv) as csvfile:
         total_months.append(row[0])
 
         # append second column (profit/loss) to total list
-        total_profit_loss.append(int(row[1]))
+        total_profit_or_loss.append(int(row[1]))
 
         # append third column (profit/loss) to largest_increase list
         largest_increase.append(int(row[1]))
@@ -66,12 +66,12 @@ with open (bank_data_csv) as csvfile:
 
     #print not required
     #print(total_months)
-    #print(total_profit_loss)
+    #print(total_profit_or_loss)
     #print(largest_increase)
     #print(largest_decrease)
 
     # Create a list containing the change in values from month to month. Then assign to variable.
-    average_change_list = [x-y for y, x in zip(total_profit_loss[:-1], total_profit_loss[1:])]
+    average_change_list = [x-y for y, x in zip(total_profit_or_loss[:-1], total_profit_or_loss[1:])]
     
     # no need to print
     # print(average_change_list)
@@ -104,3 +104,36 @@ with open (bank_data_csv) as csvfile:
     #print(largest_increase_month)
     #print(months_minimum_index)
     #print(largest_decrease_month)
+
+    
+    # In addition, your final script should both: 
+    # 1) print the analysis to the terminal.
+    # 2) export a text file with the results.
+
+    # 1) terminal
+    print('__________________________________')
+    print('                                  ')
+    print('Financial Analysis')
+    print('- - - - - - - - - - - - - - - - - ')
+    print(f'Total Months: {len(total_months)}')
+    print(f'Total: ${sum(total_profit_or_loss)}')
+    print(f'Average Change: ${round(sum(average_change_list) / len(average_change_list),2)}')
+    print(f'Greatest Increase in Profits: {largest_increase_month} ${max(largest_increase)})')
+    print(f'Greatest Decrease in Profits: {largest_decrease_month} ${min(largest_increase)})')
+
+    # 2) export a text file
+    bank_data_output_csv = os.path.join('bank_data_output.csv')
+    with open(bank_data_output_csv, 'w', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile, delimiter=',')
+
+        # Write the first row - Financial Analysis
+        
+        csvwriter.writerow('Financial Analysis')
+        csvwriter.writerow('- - - - - - - - - - - - - - - - - ')
+        csvwriter.writerow(f'Total Months: {len(total_months)}')
+        csvwriter.writerow(f'Total: ${sum(total_profit_or_loss)}')
+        csvwriter.writerow(f'Average Change: ${round(sum(average_change_list) / len(average_change_list),2)}')
+        csvwriter.writerow(f'Greatest Increase in Profits: {largest_increase_month} ${max(largest_increase)})')
+        csvwriter.writerow(f'Greatest Decrease in Profits: {largest_decrease_month} ${min(largest_increase)})')
+
+        # LITERALY SO CLOSE I JUST NEED TO GET THESE DARN COMMAS OUT OF MY CSV FILE
