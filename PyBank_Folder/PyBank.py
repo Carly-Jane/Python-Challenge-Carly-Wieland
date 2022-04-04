@@ -30,8 +30,8 @@ import csv
 
 #Empty lists for variables to be counted in. Quick mafths.
 
-months = []
-total = []
+total_months = []
+total_profit_loss = []
 largest_increase = []
 largest_decrease = []
 
@@ -48,17 +48,30 @@ with open (bank_data_csv) as csvfile:
     # alright alright alright
     # *** The total number of months included in the dataset ***
     # Loop through each row and append data to variables
+    # DRAFT
 
     for row in csvreader:
 
         # append first column (date) to months list
-        months.append(row[0])
+        total_months.append(row[0])
 
         # append second column (profit/loss) to total list
-        total.append(int(row[1]))
+        total_profit_loss.append(int(row[1]))
 
-        # append third column (profit/loss) to lge_increase list
+        # append third column (profit/loss) to largest_increase list
         largest_increase.append(int(row[1]))
 
-        # append third column (profit/loss) to lge_decrease list
+        # append third column (profit/loss) to largest_decrease list
         largest_decrease.append(int(row[1]))
+
+    #print not required
+    #print(total_months)
+    #print(total_profit_loss)
+    #print(largest_increase)
+    #print(largest_decrease)
+
+    # Create a list containing the change in values from month to month. Then assign to variable.
+    average_change_list = [x-y for y, x in zip(total_profit_loss[:-1], total_profit_loss[1:])]
+    
+    # no need to print
+    # print(average_change_list)
