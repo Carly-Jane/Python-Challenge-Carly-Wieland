@@ -75,3 +75,32 @@ with open (bank_data_csv) as csvfile:
     
     # no need to print
     # print(average_change_list)
+
+    # find which month had the largest increase/decrease in profits
+    # using letters i , j , k , l , m , n for the loops
+
+    # find index number of the largest increase and store in ‘months_maximum_index’ variable
+    for i, j in enumerate (largest_increase):
+        if j == max(largest_increase):
+            months_maximum_index = (i)
+
+    # store the month with the largest increase in ‘lge_increase_month’ variable
+    for k in [total_months[months_maximum_index]]:
+        largest_increase_month = k
+
+    # find index number of the largest decrease and store in ‘months_minimum_index’ variable
+    for l, m in enumerate (largest_decrease):
+        if m == min(largest_decrease):
+            months_minimum_index = (l)
+
+    # store the month with the largest decrease in ‘lge_decrease_month’ variable
+    for n in [total_months[months_minimum_index]]:
+        largest_decrease_month = n
+
+    # test code
+    # heck yeah looks like she's runnin'
+    # no need to print, just a sanity check
+    #print(months_maximum_index)
+    #print(largest_increase_month)
+    #print(months_minimum_index)
+    #print(largest_decrease_month)
