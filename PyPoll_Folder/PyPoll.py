@@ -71,6 +71,13 @@ with open(election_data) as csvfile:
 # SOS.
 # GIRL OKAY so it was in indent issue, ffs. but it's fixed now. 
 # my issue NOW is the vote count is coming back as 0.
+#CSV Header: ['Voter ID', 'County', 'Candidate']
+#['Khan', 'Correy', 'Li', "O'Tooley"]
+#Khan: 0    
+#Correy: 0  
+#Li: 0      
+#O Tooley: 0
+#3521002
 
     vote_count_for_khan = 0
     vote_count_for_correy = 0
