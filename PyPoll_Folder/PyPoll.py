@@ -1,26 +1,6 @@
-#PyPoll:
-#The total number of votes cast
-#A complete list of candidates who received votes
-#The percentage of votes each candidate won
-#The total number of votes each candidate won
-#The winner of the election based on popular vote.
-#In addition, your final script should both print the analysis to the terminal and export a text file with the results.
-
-#As an example, your analysis should look similar to the one below:
-#Election Results
-#-------------------------
-#Total Votes: 3521001
-#-------------------------
-#Khan: 63.000% (2218231)
-#Correy: 20.000% (704200)
-#Li: 14.000% (492940)
-#O'Tooley: 3.000% (105630)
-#-------------------------
-#Winner: Khan
-#-------------------------
 #PyPoll Task Instructions can be found in the read me file.
 
-# let's go.
+# let's go girls.
 
 # Basics: import modules, set the variables
 import os
@@ -33,17 +13,16 @@ vote_count_for_li = 0
 vote_count_for_otooley = 0
 list_of_candidates = []
 
-
 # Path to collect data from the CSV file
 election_data = os.path.join('election_data.csv')
 with open(election_data) as csvfile:
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
     
-    # Read the header row (to see column headers)
     # Test code point - no need to print, just a sanity check: 
-    csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+    # Read the header row (to see column headers)
+    # csv_header = next(csvreader)
+    # print(f"CSV Header: {csv_header}")
 
     for row in csvreader:
         
@@ -63,31 +42,20 @@ with open(election_data) as csvfile:
             vote_count_for_li += 1
         elif row[2] == "O'Tooley":
             vote_count_for_otooley += 1
-
-        
-
-
                 
     # Test code point - no need to print, just a sanity check: 
-    print(list_of_candidates)
-    print(total_votes) 
-    print(f"Khan: {vote_count_for_khan}")
-    print(f"Correy: {vote_count_for_correy}")
-    print(f"Li: {vote_count_for_li}")
-    print(f"O Tooley: {vote_count_for_otooley}")
+    # print(list_of_candidates)
+    # print(total_votes) 
+    # print(f"Khan: {vote_count_for_khan}")
+    # print(f"Correy: {vote_count_for_correy}")
+    # print(f"Li: {vote_count_for_li}")
+    # print(f"O Tooley: {vote_count_for_otooley}")
             
-
 # *** The winner of the election based on popular vote. ***
-# which candidate had the highest vote count
-# should i make vote_count_for_khan, correy, li & otooley a list, 
-# then draw out the max value in that list?
-# ?calculate_winner_list = [vote_count_for_khan, vote_count_for_correy, vote_count_for_li, vote_count_for_otooley]
+dictionary_of_vote_summary = {"Khan": vote_count_for_khan, "Correy": vote_count_for_correy, "Li": vote_count_for_li, "O'Tooley": vote_count_for_otooley}
+election_winner = max(zip(dictionary_of_vote_summary.values(), dictionary_of_vote_summary.keys()))[1]
 
-# Khan: 2218231
-# Correy: 704200
-# Li: 492940
-# O Tooley: 105630
-
+# *** The percentage of votes each candidate won ***
 percentage_of_total_votes_khan = round((100/total_votes)*vote_count_for_khan,2)
 percentage_of_total_votes_correy = round((100/total_votes)*vote_count_for_correy,2)
 percentage_of_total_votes_li = round((100/total_votes)*vote_count_for_li,2)
@@ -109,7 +77,7 @@ print(f'Correy: {percentage_of_total_votes_correy}% ({vote_count_for_correy})')
 print(f'Li: {percentage_of_total_votes_li}% ({vote_count_for_li})')
 print(f'O Tooley: {percentage_of_total_votes_otooley}% ({vote_count_for_otooley})')
 print('- - - - - - - - - - - - - - - - - ')
-#print(f'Winner: {STILL FIGURING THIS BIT OUT}')
+print(f'Winner: {election_winner}')
 print('- - - - - - - - - - - - - - - - - ')
 
     # 2) export a text file
@@ -126,28 +94,9 @@ with open(election_data_output_csv, 'w', newline='') as csvfile:
     csvwriter.writerow([(f'Li: {percentage_of_total_votes_li}% ({vote_count_for_li})')])
     csvwriter.writerow([(f'O Tooley: {percentage_of_total_votes_otooley}% ({vote_count_for_otooley})')])
     csvwriter.writerow(['- - - - - - - - - - - - - - - - - '])
-    #csvwriter.writerow(f'Winner: {STILL FIGURING THIS BIT OUT}')
+    csvwriter.writerow([f'Winner: {election_winner}'])
+    csvwriter.writerow(['- - - - - - - - - - - - - - - - - '])
 
-
-# dictionary_of_vote_summary = {"Khan": vote_count_for_khan, "Correy": vote_count_for_correy, "Li": vote_count_for_li, "O'Tooley": vote_count_for_otooley}
-        
-# def findwinner():
-# # initialize comparison value
-#     first_place = 0
-# # iterate over each unique candidate in the dictionary
-# for key, value in dictionary_of_vote_summary.items():
-#     # if largest vote count so far, store as top vote count
-#     if value [1] > first_place:
-#         first_place = value[1]
-#         # store corresponding candidate name
-#         winner = key
-#     else:
-#         pass
-# print(findwinner()) 
-
-# LITERALY SO CLOSE
-# QUICK MAFTHS TO GET VOTE PERCENTAGE, 
-# THEN GET A FORMULA TO DISPLAY THE CANDIDATE WIKTH THE HIGHEST VOTE COUNT
 
 #-----------------------------------------------------------------------------------------------------------
 # References:
