@@ -1,28 +1,11 @@
-#PyBank:
-#In this challenge, you are tasked with creating a Python script for analyzing the financial records of your company. You will give a set of financial data called budget_data.csv. The dataset is composed of two columns: Date and Profit/Losses. (Thankfully, your company has rather lax standards for accounting so the records are simple.)
-#Your task is to create a Python script that analyzes the records to calculate each of the following:
+#PyBank Task Instructions can be found in the read me file.
 
-#The total number of months included in the dataset
-#The net total amount of "Profit/Losses" over the entire period
-#The average of the changes in "Profit/Losses" over the entire period
-#The greatest increase in profits (date and amount) over the entire period
-#The greatest decrease in losses (date and amount) over the entire period
-#In addition, your final script should both print the analysis to the terminal and export a text file with the results.
-
-#As an example, your analysis should look similar to the one below:
-#Financial Analysis
-#----------------------------
-#Total Months: 86
-#Total: $38382578
-#Average  Change: $-2315.12
-#Greatest Increase in Profits: Feb-2012 ($1926159)
-#Greatest Decrease in Profits: Sep-2013 ($-2196167)
-
+# alright alright alright
 
 import os
 import csv
 
-#Empty lists for variables to be counted in. Quick mafths.
+#lists for variables to be counted in.
 
 total_months = []
 total_profit_or_loss = []
@@ -38,10 +21,8 @@ with open (bank_data_csv) as csvfile:
     # skip header row
     csv_header = next(csvreader, None)
 
-    # alright alright alright
+
     # *** The total number of months included in the dataset ***
-    # Loop through each row and append data to variables
-    # DRAFT
 
     for row in csvreader:
 
@@ -57,26 +38,17 @@ with open (bank_data_csv) as csvfile:
         # append third column (profit/loss) to largest_decrease list
         largest_decrease.append(int(row[1]))
 
-    #print not required
-    #print(total_months)
-    #print(total_profit_or_loss)
-    #print(largest_increase)
-    #print(largest_decrease)
+    # Test code point - no need to print, just a sanity check: #print(total_months) #print(total_profit_or_loss) #print(largest_increase) #print(largest_decrease)
 
-    # Create a list containing the change in values from month to month. Then assign to variable.
-    #using zip -  "zip takes in a series of lists as it's parameters and joins them together into a stack"
+
+    # Create a list containing the change in values from month to month. Then assign to variable. Use zip - "zip takes in a series of lists as it's parameters and joins them together into a stack"
     average_change_list = [x-y for y, x in zip(total_profit_or_loss[:-1], total_profit_or_loss[1:])]
     
-    # no need to print
-    # print(average_change_list)
+    # Test code point - no need to print, just a sanity check: # print(average_change_list)
 
-    # find which month had the largest increase/decrease in profits
-    # using letters i , j , k , l , m , n for the loops
 
-    # "built-in function enumerate() - Often, when dealing with iterators, we also get a need to keep a count of iterations."
-    # "Enumerate() method adds a counter to an iterable and returns it in a form of enumerating object. "
-    # "This enumerated object can then be used directly for loops or converted into a list of tuples using the list() method."
-    # https://www.geeksforgeeks.org/enumerate-in-python/
+    # Find which month had the largest increase/decrease in profits - using letters i , j , k , l , m , n for the loops
+    # Reference 1: https://www.geeksforgeeks.org/enumerate-in-python/
 
     # find index number of the largest increase and store in ‘months_maximum_index’ variable
     for i, j in enumerate (largest_increase):
@@ -96,17 +68,9 @@ with open (bank_data_csv) as csvfile:
     for n in [total_months[months_minimum_index]]:
         largest_decrease_month = n
 
-    # test code
-    # heck yeah looks like she's runnin'
-    # no need to print, just a sanity check
-    #print(months_maximum_index)
-    #print(largest_increase_month)
-    #print(months_minimum_index)
-    #print(largest_decrease_month)
+    # Test code point - no need to print, just a sanity check: #print(months_maximum_index)#print(largest_increase_month)#print(months_minimum_index)#print(largest_decrease_month)
     
-    # In addition, your final script should both: 
-    # 1) print the analysis to the terminal.
-    # 2) export a text file with the results.
+    # *** Final script should both: 1) print the analysis to the terminal. 2) export a text file with the results. ***
 
     # 1) terminal
     print('__________________________________')
@@ -125,8 +89,6 @@ with open (bank_data_csv) as csvfile:
     bank_data_output_csv = os.path.join('bank_data_output.csv')
     with open(bank_data_output_csv, 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, delimiter=',')
-
-        # Write the first row - Financial Analysis
         
         csvwriter.writerow(['Financial Analysis'])
         csvwriter.writerow(['- - - - - - - - - - - - - - - - - '])
@@ -136,4 +98,9 @@ with open (bank_data_csv) as csvfile:
         csvwriter.writerow([(f'Greatest Increase in Profits: {largest_increase_month} ${max(largest_increase)})')])
         csvwriter.writerow([(f'Greatest Decrease in Profits: {largest_decrease_month} ${min(largest_increase)})')])
 
-        # LITERALY SO CLOSE I JUST NEED TO GET THESE DARN COMMAS OUT OF MY CSV FILE
+
+# Reference List:
+# Reference 1: https://www.geeksforgeeks.org/enumerate-in-python/
+# "built-in function enumerate() - Often, when dealing with iterators, we also get a need to keep a count of iterations."
+# "Enumerate() method adds a counter to an iterable and returns it in a form of enumerating object. "
+# "This enumerated object can then be used directly for loops or converted into a list of tuples using the list() method."
