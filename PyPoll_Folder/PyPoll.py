@@ -1,7 +1,4 @@
 #PyPoll:
-#In this challenge, you are tasked with helping a small, rural town modernize its vote counting process.
-#You will be give a set of poll data called election_data.csv. The dataset is composed of three columns: Voter ID, County, and Candidate. Your task is to create a Python script that analyzes the votes and calculates each of the following:
-
 #The total number of votes cast
 #A complete list of candidates who received votes
 #The percentage of votes each candidate won
@@ -21,7 +18,9 @@
 #-------------------------
 #Winner: Khan
 #-------------------------
+#PyPoll Task Instructions can be found in the read me file.
 
+# let's go.
 
 # Basics: import modules, set the variables
 import os
@@ -41,7 +40,7 @@ with open(election_data) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     
     # Read the header row (to see column headers)
-    # I will delete this line from the code later as it isn't required for the final result.
+    # Test code point - no need to print, just a sanity check: 
     csv_header = next(csvreader)
     print(f"CSV Header: {csv_header}")
 
@@ -64,7 +63,7 @@ with open(election_data) as csvfile:
         elif row[2] == "O'Tooley":
             vote_count_for_otooley += 1
 
-    # I will delete these lines from the code later as it isn't required for the final result.
+    # Test code point - no need to print, just a sanity check: 
     print(list_of_candidates)
     print(total_votes) 
     print(f"Khan: {vote_count_for_khan}")
@@ -76,6 +75,7 @@ with open(election_data) as csvfile:
 # which candidate had the highest vote count
 # should i make vote_count_for_khan, correy, li & otooley a list, 
 # then draw out the max value in that list?
+# ?calculate_winner_list = [vote_count_for_khan, vote_count_for_correy, vote_count_for_li, vote_count_for_otooley]
 
 # Khan: 2218231
 # Correy: 704200
@@ -107,19 +107,19 @@ election_data_output_csv = os.path.join('election_data_output.csv')
 with open(election_data_output_csv, 'w', newline='') as csvfile:
     csvwriter = csv.writer(csvfile, delimiter=',')
         
-    csvwriter.writerow('Election Results')
-    csvwriter.writerow('- - - - - - - - - - - - - - - - - ')
-    csvwriter.writerow(f'Total Votes: {total_votes}')
-    csvwriter.writerow('- - - - - - - - - - - - - - - - - ')
-    csvwriter.writerow(f'Khan: (100/{total_votes}*{vote_count_for_khan})% {({vote_count_for_khan})}')
-    csvwriter.writerow(f'Correy: (100/{total_votes}*{vote_count_for_khan})% {({vote_count_for_khan})}')
-    csvwriter.writerow(f'Li: (100/{total_votes}*{vote_count_for_khan})% {({vote_count_for_khan})}')
-    csvwriter.writerow(f'O Tooley: (100/{total_votes}*{vote_count_for_khan})% {({vote_count_for_khan})}')
-    csvwriter.writerow('- - - - - - - - - - - - - - - - - ')
+    csvwriter.writerow(['Election Results'])
+    csvwriter.writerow(['- - - - - - - - - - - - - - - - - '])
+    csvwriter.writerow([(f'Total Votes: {total_votes}')])
+    csvwriter.writerow(['- - - - - - - - - - - - - - - - - '])
+    csvwriter.writerow([(f'Khan: (100/{total_votes}*{vote_count_for_khan})% {({vote_count_for_khan})}')])
+    csvwriter.writerow([(f'Correy: (100/{total_votes}*{vote_count_for_khan})% {({vote_count_for_khan})}')])
+    csvwriter.writerow([(f'Li: (100/{total_votes}*{vote_count_for_khan})% {({vote_count_for_khan})}')])
+    csvwriter.writerow([(f'O Tooley: (100/{total_votes}*{vote_count_for_khan})% {({vote_count_for_khan})}')])
+    csvwriter.writerow(['- - - - - - - - - - - - - - - - - '])
     #csvwriter.writerow(f'Winner: {STILL FIGURING THIS BIT OUT}')
 
-# LITERALY SO CLOSE I JUST NEED TO GET THESE DARN COMMAS OUT OF MY CSV FILE
-# THEN VERIFY THE QUICK MAFTHS TO GET VOTE PERCENTAGE, 
+# LITERALY SO CLOSE
+# QUICK MAFTHS TO GET VOTE PERCENTAGE, 
 # THEN GET A FORMULA TO DISPLAY THE CANDIDATE WIKTH THE HIGHEST VOTE COUNT
 
 #-----------------------------------------------------------------------------------------------------------
