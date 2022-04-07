@@ -82,6 +82,10 @@ with open(election_data) as csvfile:
         elif row[2] == "O'Tooley":
             vote_count_for_otooley += 1
 
+        # Should I format this like the pybank task?
+        # append first column (date) to months list
+        #total_months.append(row[0])
+
     print(f"Khan: {vote_count_for_khan}")
     print(f"Correy: {vote_count_for_correy}")
     print(f"Li: {vote_count_for_li}")
@@ -104,13 +108,11 @@ print(Total_Votes)
 #vote_count_for_li = [0]
 #vote_count_for_otooley = [0]
 
-
 #do i need this?
 # Define the columns as per headers in the CSV file
 VoterID = str(election_data[0])
 County = str(election_data[1])
 Candidate = str(election_data[2])
-
 
     # In addition, your final script should both: 
     # 1) print the analysis to the terminal.

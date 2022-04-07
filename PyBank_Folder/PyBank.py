@@ -22,7 +22,6 @@
 
 #In addition, your final script should both print the analysis to the terminal and export a text file with the results.
 
-
 # let's go baby
 
 import os
@@ -71,6 +70,7 @@ with open (bank_data_csv) as csvfile:
     #print(largest_decrease)
 
     # Create a list containing the change in values from month to month. Then assign to variable.
+    #using zip -  "zip takes in a series of lists as it's parameters and joins them together into a stack"
     average_change_list = [x-y for y, x in zip(total_profit_or_loss[:-1], total_profit_or_loss[1:])]
     
     # no need to print
@@ -78,6 +78,11 @@ with open (bank_data_csv) as csvfile:
 
     # find which month had the largest increase/decrease in profits
     # using letters i , j , k , l , m , n for the loops
+
+    # "built-in function enumerate() - Often, when dealing with iterators, we also get a need to keep a count of iterations."
+    # "Enumerate() method adds a counter to an iterable and returns it in a form of enumerating object. "
+    # "This enumerated object can then be used directly for loops or converted into a list of tuples using the list() method."
+    # https://www.geeksforgeeks.org/enumerate-in-python/
 
     # find index number of the largest increase and store in ‘months_maximum_index’ variable
     for i, j in enumerate (largest_increase):
@@ -104,7 +109,6 @@ with open (bank_data_csv) as csvfile:
     #print(largest_increase_month)
     #print(months_minimum_index)
     #print(largest_decrease_month)
-
     
     # In addition, your final script should both: 
     # 1) print the analysis to the terminal.
@@ -120,6 +124,8 @@ with open (bank_data_csv) as csvfile:
     print(f'Average Change: ${round(sum(average_change_list) / len(average_change_list),2)}')
     print(f'Greatest Increase in Profits: {largest_increase_month} ${max(largest_increase)})')
     print(f'Greatest Decrease in Profits: {largest_decrease_month} ${min(largest_increase)})')
+    print('                                  ')
+    print('__________________________________')
 
     # 2) export a text file
     bank_data_output_csv = os.path.join('bank_data_output.csv')
