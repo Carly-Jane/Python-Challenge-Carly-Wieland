@@ -128,12 +128,12 @@ with open (bank_data_csv) as csvfile:
 
         # Write the first row - Financial Analysis
         
-        csvwriter.writerow('Financial Analysis')
-        csvwriter.writerow('- - - - - - - - - - - - - - - - - ')
-        csvwriter.writerow(f'Total Months: {len(total_months)}')
-        csvwriter.writerow(f'Total: ${sum(total_profit_or_loss)}')
-        csvwriter.writerow(f'Average Change: ${round(sum(average_change_list) / len(average_change_list),2)}')
-        csvwriter.writerow(f'Greatest Increase in Profits: {largest_increase_month} ${max(largest_increase)})')
-        csvwriter.writerow(f'Greatest Decrease in Profits: {largest_decrease_month} ${min(largest_increase)})')
+        csvwriter.writerow(['Financial Analysis'])
+        csvwriter.writerow(['- - - - - - - - - - - - - - - - - '])
+        csvwriter.writerow([(f'Total Months: {len(total_months)}')])
+        csvwriter.writerow([(f'Total: ${sum(total_profit_or_loss)}')])
+        csvwriter.writerow([(f'Average Change: ${round(sum(average_change_list) / len(average_change_list),2)}')])
+        csvwriter.writerow([(f'Greatest Increase in Profits: {largest_increase_month} ${max(largest_increase)})')])
+        csvwriter.writerow([(f'Greatest Decrease in Profits: {largest_decrease_month} ${min(largest_increase)})')])
 
         # LITERALY SO CLOSE I JUST NEED TO GET THESE DARN COMMAS OUT OF MY CSV FILE
