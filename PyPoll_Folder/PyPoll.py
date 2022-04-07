@@ -33,6 +33,7 @@ vote_count_for_li = 0
 vote_count_for_otooley = 0
 list_of_candidates = []
 
+
 # Path to collect data from the CSV file
 election_data = os.path.join('election_data.csv')
 with open(election_data) as csvfile:
@@ -63,13 +64,18 @@ with open(election_data) as csvfile:
         elif row[2] == "O'Tooley":
             vote_count_for_otooley += 1
 
+        
+
+
+                
     # Test code point - no need to print, just a sanity check: 
     print(list_of_candidates)
     print(total_votes) 
     print(f"Khan: {vote_count_for_khan}")
     print(f"Correy: {vote_count_for_correy}")
     print(f"Li: {vote_count_for_li}")
-    print(f"O Tooley: {vote_count_for_otooley}")         
+    print(f"O Tooley: {vote_count_for_otooley}")
+            
 
 # *** The winner of the election based on popular vote. ***
 # which candidate had the highest vote count
@@ -82,6 +88,10 @@ with open(election_data) as csvfile:
 # Li: 492940
 # O Tooley: 105630
 
+percentage_of_total_votes_khan = round((100/total_votes)*vote_count_for_khan,2)
+percentage_of_total_votes_correy = round((100/total_votes)*vote_count_for_correy,2)
+percentage_of_total_votes_li = round((100/total_votes)*vote_count_for_li,2)
+percentage_of_total_votes_otooley = round((100/total_votes)*vote_count_for_otooley,2)
 
 # *** In addition, your final script should both: ***
 # 1) print the analysis to the terminal.
@@ -94,10 +104,10 @@ print('Election Results')
 print('- - - - - - - - - - - - - - - - - ')
 print(f'Total Votes: {total_votes}')
 print('- - - - - - - - - - - - - - - - - ')
-print(f'Khan: (100/{total_votes}*{vote_count_for_khan})% {({vote_count_for_khan})}')
-print(f'Correy: (100/{total_votes}*{vote_count_for_correy})% {({vote_count_for_correy})}')
-print(f'Li: (100/{total_votes}*{vote_count_for_li})% {({vote_count_for_li})}')
-print(f'O Tooley: (100/{total_votes}*{vote_count_for_otooley})% {({vote_count_for_otooley})}')
+print(f'Khan: {percentage_of_total_votes_khan}% ({vote_count_for_khan})')
+print(f'Correy: {percentage_of_total_votes_correy}% ({vote_count_for_correy})')
+print(f'Li: {percentage_of_total_votes_li}% ({vote_count_for_li})')
+print(f'O Tooley: {percentage_of_total_votes_otooley}% ({vote_count_for_otooley})')
 print('- - - - - - - - - - - - - - - - - ')
 #print(f'Winner: {STILL FIGURING THIS BIT OUT}')
 print('- - - - - - - - - - - - - - - - - ')
@@ -111,12 +121,29 @@ with open(election_data_output_csv, 'w', newline='') as csvfile:
     csvwriter.writerow(['- - - - - - - - - - - - - - - - - '])
     csvwriter.writerow([(f'Total Votes: {total_votes}')])
     csvwriter.writerow(['- - - - - - - - - - - - - - - - - '])
-    csvwriter.writerow([(f'Khan: (100/{total_votes}*{vote_count_for_khan})% {({vote_count_for_khan})}')])
-    csvwriter.writerow([(f'Correy: (100/{total_votes}*{vote_count_for_correy})% {({vote_count_for_correy})}')])
-    csvwriter.writerow([(f'Li: (100/{total_votes}*{vote_count_for_li})% {({vote_count_for_li})}')])
-    csvwriter.writerow([(f'O Tooley: (100/{total_votes}*{vote_count_for_otooley})% {({vote_count_for_otooley})}')])
+    csvwriter.writerow([(f'Khan: {percentage_of_total_votes_khan}% ({vote_count_for_khan})')])
+    csvwriter.writerow([(f'Correy: {percentage_of_total_votes_correy}% ({vote_count_for_correy})')])
+    csvwriter.writerow([(f'Li: {percentage_of_total_votes_li}% ({vote_count_for_li})')])
+    csvwriter.writerow([(f'O Tooley: {percentage_of_total_votes_otooley}% ({vote_count_for_otooley})')])
     csvwriter.writerow(['- - - - - - - - - - - - - - - - - '])
     #csvwriter.writerow(f'Winner: {STILL FIGURING THIS BIT OUT}')
+
+
+# dictionary_of_vote_summary = {"Khan": vote_count_for_khan, "Correy": vote_count_for_correy, "Li": vote_count_for_li, "O'Tooley": vote_count_for_otooley}
+        
+# def findwinner():
+# # initialize comparison value
+#     first_place = 0
+# # iterate over each unique candidate in the dictionary
+# for key, value in dictionary_of_vote_summary.items():
+#     # if largest vote count so far, store as top vote count
+#     if value [1] > first_place:
+#         first_place = value[1]
+#         # store corresponding candidate name
+#         winner = key
+#     else:
+#         pass
+# print(findwinner()) 
 
 # LITERALY SO CLOSE
 # QUICK MAFTHS TO GET VOTE PERCENTAGE, 
